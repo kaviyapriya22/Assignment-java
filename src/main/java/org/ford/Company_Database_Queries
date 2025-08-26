@@ -1,0 +1,93 @@
+--Basic Queries
+select * from Employee;
+
+select  EmpName, Salary from Employee where salary >60000;
+
+select * from Department where Location = 'New York';
+
+select  ProjectName, Budget from Project where budget > 1000000.0;
+
+
+
+-- Filtering and conditions
+
+select e.empname from employee e  join Department d on e.DeptID = d.DeptID where d.deptname = 'IT';
+
+select * from Employee where Designation ='Manager' and Salary > 80000.0;
+
+select  e.empname, e.deptid from Employee e where e.empid not in (select w.empid from workson w)
+
+
+
+-- Aggregate functions 
+
+select e.deptid , avg (e.salary) from employee e group by e.deptid;
+
+select e.deptid , avg (e.salary) average_salary  from employee e group by e.deptid
+order by average_salary DESC  limit 1 ;
+
+SELECT d.deptname,e.deptid, COUNT(e.empid) employee_count FROM employee e join department d on e.deptid = d.deptid group by d.deptname,e.deptid;
+
+
+
+-- joins
+select e.empname , d.deptname from employee e join department d on 
+e.deptid = d.deptid;
+
+select p.projectname , e.empname  from workson w  join employee e  on e.empid = w.empid join project p  on w.projectid = p.projectid group by p.projectname,e.empname;
+
+select e.empname, w.hours , p.projectname from workson w join employee e on
+e.empid = w.empid join project p on w.projectid = p.projectid
+where w.hours > 30;
+
+select e.empname, p.projectname, d.deptname from employee e join department d
+on e.deptid = d.deptid join project p on d.deptid = p.deptid where d.deptid = (
+  select deptid from department where deptname = 'Finance');
+
+
+
+-- subqueries
+
+SELECT 
+    e.EmpName,
+    e.Salary,
+    d.DeptName
+FROM Employee e
+JOIN Department d ON e.DeptID = d.DeptID
+WHERE e.Salary > (
+    SELECT AVG(e2.Salary)
+    FROM Employee e2
+    WHERE e2.DeptID = e.DeptID
+);
+
+select e.empname from employee e left join workson w on e.empid = w.empid where w.projectid is null;
+
+
+
+--updates and constraints
+INSERT INTO Employee (EmpID, EmpName, Designation, Salary, DeptID)
+VALUES (106, 'Frank', 'Analyst', 50000, 3);
+
+UPDATE Employee
+SET Salary = Salary *1.1 where DeptID = (select DeptID FROM Department WHERE DeptName = 'HR');
+
+DELETE from Employee where DeptID is null;
+
+
+
+--Advanced queries 
+select d.deptname , count (*) employee_count  from employee e join department d 
+on e.deptid = d.deptid group by d.deptid order by employee_count DESC limit 1;
+
+select p.projectname , count(e.empname) employee_count from workson w join employee e on e.empid = w.empid join project p on w.projectid = p.projectid  group by p.projectname having count(e.empname) >5;
+
+select e.empname, e.empid , count(p.projectname) as project_count 
+from employee e join workson w on e.empid=w.empid join project p on w.projectid = p.projectid group by e.empid,e.empname having count(p.projectname) >1;
+
+select e.empname, e.salary from employee e order by salary desc ;
+
+
+
+
+
+
