@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Survey Form</title>
+</head>
+<body>
+    <h2>Online Survey</h2>
+    <form>
+        <label for="satisfaction">Satisfaction (1–10):</label>
+        <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" step="1" value="5">
+
+        <label>Subscribe to:</label>
+        <input type="checkbox" id="newsletter" name="subscribe" value="Newsletter">
+        <label for="newsletter">Newsletter</label>
+        <input type="checkbox" id="offers" name="subscribe" value="Offers">
+        <label for="offers">Offers</label>
+        <input type="checkbox" id="updates" name="subscribe" value="Updates">
+        <label for="updates">Updates</label>
+
+        <label for="emailFreq">Email Updates Frequency:</label>
+        <select id="emailFreq" name="emailFreq">
+            <optgroup label="Frequency">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </optgroup>
+        </select>
+
+        <label for="surveyEmail">Email:</label>
+        <input type="email" id="surveyEmail" name="surveyEmail" value="someone@example.com" required>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+</html>

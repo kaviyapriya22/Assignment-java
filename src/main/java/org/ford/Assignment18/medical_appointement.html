@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Appointment Form</title>
+</head>
+<body>
+    <h2>Healthcare Appointment</h2>
+    <form>
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" aria-label="Patient Name" autocomplete="name" required>
+
+        <label for="patientAge">Age:</label>
+        <input type="number" id="patientAge" name="patientAge" aria-label="Patient Age" required>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label>
+
+        <label for="appointment">Appointment Date & Time:</label>
+        <input type="datetime-local" id="appointment" name="appointment" required>
+
+        <label for="symptoms">Symptoms:</label>
+        <textarea id="symptoms" name="symptoms" aria-label="Symptoms" required></textarea>
+
+        <button type="reset">Reset</button>
+        <button type="submit">Book Appointment</button>
+    </form>
+</body>
+</html>
