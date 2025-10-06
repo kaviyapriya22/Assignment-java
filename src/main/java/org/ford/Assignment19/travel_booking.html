@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Booking Form</title>
+</head>
+<body>
+    <h2>Travel Booking</h2>
+    <form>
+        <fieldset>
+            <legend>Step 1: Traveler Info</legend>
+            <label for="travelerName">Name:</label>
+            <input type="text" id="travelerName" name="travelerName" required>
+
+            <label for="travelerEmail">Email:</label>
+            <input type="email" id="travelerEmail" name="travelerEmail" required>
+
+            <label for="travelerPhone">Phone:</label>
+            <input type="tel" id="travelerPhone" name="travelerPhone" required>
+
+            <button formaction="#step1">Save Draft</button>
+            <button formaction="#step2">Proceed →</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>Step 2: Trip Details</legend>
+            <label for="destination">Destination:</label>
+            <input list="destinations" id="destination" name="destination">
+            <datalist id="destinations">
+                <option value="Paris">
+                <option value="London">
+                <option value="Tokyo">
+            </datalist>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+
+            <button formaction="#step1">← Back</button>
+            <button formaction="#step3">Proceed →</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>Step 3: Payment</legend>
+            <label for="cardNo">Card Number:</label>
+            <input type="text" id="cardNo" name="cardNo" required>
+
+            <label for="cvvPayment">CVV:</label>
+            <input type="password" id="cvvPayment" name="cvvPayment" maxlength="3" required>
+
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree">I agree to terms and conditions</label>
+
+            <button type="submit">Submit Booking</button>
+        </fieldset>
+    </form>
+</body>
+</html>
